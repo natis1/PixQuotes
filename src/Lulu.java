@@ -9,9 +9,12 @@ public class Lulu {
                 "\nultimate battle between good and evil. If there were ever an event which needed more popularity, it would" +
                 "\n      be this one. This string is to simulate different kinds of grammar and also the parsing that would be" +
                 "\nrequired to get this thing working. slash n should become space and multiple      spaces in a row should be removed" +
-                "\n Using Regex makes this whole thing possible if I do it right. I hope   "
+                "\n Using Regex makes this whole thing possible if I do it right. I hope   ";
 
 
+
+
+        new Pix(userString);
     }
 
 
