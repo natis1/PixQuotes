@@ -5,9 +5,9 @@ import java.util.Random;
  * Created by kogmaw on 4/20/16.
  */
 public class Pix {
-    String[] parsedStrings;
-    String outputString;
-    int chainLength = 3;
+    private String[] parsedStrings;
+    private String outputString;
+    private int chainLength = 3;
 
     public Pix(String unparsedString){
         parsedStrings = parseString(unparsedString);
@@ -33,32 +33,32 @@ public class Pix {
 
     private void generateChain(){
         Random stringPicker = new Random(System.nanoTime());
-        int stringPicked = (int) Math.floor(parsedStrings.length * stringPicker.nextDouble());
-        int currentChainLength = 0;
+        int stringPicked = (int) Math.floor(parsedStrings.length * stringPicker.nextDouble()) - chainLength;
         for (int i = 0; i < 200; i++){
-            String stringPickedByStringPicker = parsedStrings[stringPicked];
-            System.out.print(stringPickedByStringPicker + " ");
-            currentChainLength++;
-            if (currentChainLength >= chainLength || stringPicked + 1 == parsedStrings.length){
-                //TODO custom randomness
-                stringPicked = (int) Math.floor(parsedStrings.length * stringPicker.nextDouble());
-                currentChainLength = 0;
-            } else {
+
+            String stringPickedByStringPicker = "";
+
+            for  (int currentLength = 0; currentLength < chainLength; currentLength++) {
+                stringPickedByStringPicker += parsedStrings[stringPicked + currentLength] + " ";
+            }
+            String lastWord = parsedStrings[stringPicked + chainLength - 1];
+
+            System.out.print(stringPickedByStringPicker);
+            if (i % 10 == 9){
+                System.out.println();//return
+            }
+
                 ArrayList<Integer> pickableStrings = new ArrayList<>();
-                for (int j = 0; j < parsedStrings.length - 1; j++){
-                    if (parsedStrings[j].replace(".", "") == stringPickedByStringPicker.replace(".", "")){
+                for (int j = 0; j < parsedStrings.length - chainLength - 2; j++){
+                    if (parsedStrings[j].replace(".", "") == lastWord.replace(".", "")){
                         pickableStrings.add(j + 1);
                     }
                 }
-                if (pickableStrings.isEmpty()){
+                if (pickableStrings.isEmpty() || stringPicked + chainLength == parsedStrings.length){
                     stringPicked = (int) Math.floor(parsedStrings.length * stringPicker.nextDouble());
-                    currentChainLength = 0;
                 } else {
                     stringPicked = pickableStrings.get((int) Math.floor(pickableStrings.size() * stringPicker.nextDouble()));
-                    currentChainLength++;
                 }
-
-
             }
 
 
@@ -69,4 +69,4 @@ public class Pix {
     }
 
 
-}
+
