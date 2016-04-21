@@ -1,3 +1,8 @@
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 /**
  * Created by kogmaw on 4/20/16.
  */
@@ -13,7 +18,7 @@ public class Lulu {
 
 
 
-        setUserText(50);
+        setUserText(0);
 
         if (userString.length() < 30){
             System.out.println("Please add some more text");
@@ -34,6 +39,13 @@ public class Lulu {
 
         if (typeToSet == 0){
 
+            try {
+                byte[] fileByteData = Files.readAllBytes(Paths.get("src/inputs/jungle.txt"));
+                userString = new String(fileByteData, StandardCharsets.UTF_8);
+            }
+            catch(IOException ex) {
+                System.out.println("Error reading file");
+            }
 
         }
 

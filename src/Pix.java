@@ -6,13 +6,11 @@ import java.util.Random;
  */
 public class Pix {
     private String[] parsedStrings;
-    private String outputString;
-    private int chainLength = 3;
+    private int chainLength = 2;
 
     public Pix(String unparsedString){
         parsedStrings = parseString(unparsedString);
         generateChain();
-        System.out.println(outputString);
     }
 
 
@@ -55,7 +53,7 @@ public class Pix {
                     }
                 }
                 if (pickableStrings.isEmpty() || stringPicked + chainLength == parsedStrings.length){
-                    stringPicked = (int) Math.floor(parsedStrings.length * stringPicker.nextDouble());
+                    stringPicked = (int) Math.floor(parsedStrings.length * stringPicker.nextDouble() - chainLength - 1);
                 } else {
                     stringPicked = pickableStrings.get((int) Math.floor(pickableStrings.size() * stringPicker.nextDouble()));
                 }
