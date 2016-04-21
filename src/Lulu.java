@@ -11,13 +11,21 @@ public class Lulu {
                 "\nrequired to get this thing working. slash n should become space and multiple      spaces in a row should be removed" +
                 "\n Using Regex makes this whole thing possible if I do it right. I hope   ";
 
-        Pix Faerie = new Pix(userString);
+
+        userString = "";
+
+        if (userString.length() < 30){
+            System.out.println("Please add some more text");
+            System.exit(2);
+        }
+
+        new Pix(userString);
     }
 
     public Lulu(String input){
 
 
-        Pix Faerie = new Pix(input);
+        new Pix(input);
     }
 
 
