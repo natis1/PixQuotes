@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -6,10 +7,12 @@ import java.util.Random;
 public class Pix {
     String[] parsedStrings;
     String outputString;
+    int chainLength = 3;
+
     public Pix(String unparsedString){
         parsedStrings = parseString(unparsedString);
         generateChain();
-
+        System.out.println(outputString);
     }
 
 
@@ -31,13 +34,29 @@ public class Pix {
     private void generateChain(){
         Random stringPicker = new Random(System.nanoTime());
         int stringPicked = (int) Math.floor(parsedStrings.length * stringPicker.nextDouble());
-
+        int currentChainLength = 0;
         for (int i = 0; i < 5000; i++){
-            outputString += parsedStrings[stringPicked];
-
-            if (stringPicker.nextDouble() > 0.8){
+            String stringPickedByStringPicker = parsedStrings[stringPicked];
+            outputString += stringPickedByStringPicker;
+            currentChainLength++;
+            if (currentChainLength >= chainLength || stringPicked + 1 == parsedStrings.length){
                 //TODO custom randomness
                 stringPicked = (int) Math.floor(parsedStrings.length * stringPicker.nextDouble());
+                currentChainLength = 0;
+            } else {
+                ArrayList<Integer> pickableStrings = new ArrayList<>();
+                for (int j = 0; j < parsedStrings.length - 1; j++){
+                    if (parsedStrings[j].replace(".", "") == stringPickedByStringPicker.replace(".", "")){
+                        pickableStrings.add(j + 1);
+                    }
+                }
+                if (pickableStrings.isEmpty()){
+                    stringPicked = (int) Math.floor(parsedStrings.length * stringPicker.nextDouble());
+                    currentChainLength = 0;
+                } else {
+                    stringPicked = pickableStrings.get((int) Math.floor(pickableStrings.size() * stringPicker.nextDouble()));
+                    currentChainLength++;
+                }
 
 
             }
