@@ -9,12 +9,16 @@ Pix Quotes is my attempt to recreate Markov Chain text generators. Now you too c
 # How do I use this
 
 0) Get java 8 you silly person.
+
 1) Run java -jar PixQuotes.jar in a console.
+
 2) Follow the directions provided
+
 3) Use > to output the results to a file
 
 
 # What features will you add in the future?
 
 I have nothing really planned
+
 If you want the output to be placed in a file then pipe it into one from the console.
