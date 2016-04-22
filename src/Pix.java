@@ -22,10 +22,10 @@ public class Pix {
             unparsedString += ".";//End it with a period
         }
         while (unparsedString.contains("\n")){
-            unparsedString.replace("\n", " ");//Replace returns with space
+            unparsedString = unparsedString.replace("\n", " ");//Replace returns with space
         }
         while (unparsedString.contains("  ")){
-            unparsedString.replace("  ", " "); //2 becomes 1
+            unparsedString = unparsedString.replace("  ", " "); //2 becomes 1
         }
 
         return unparsedString.split(" ");
@@ -35,9 +35,9 @@ public class Pix {
         Random stringPicker = new Random(System.nanoTime());
         int stringPicked = (int) Math.floor(parsedStrings.length * stringPicker.nextDouble());
         int currentChainLength = 0;
-        for (int i = 0; i < 5000; i++){
+        for (int i = 0; i < 200; i++){
             String stringPickedByStringPicker = parsedStrings[stringPicked];
-            outputString += stringPickedByStringPicker;
+            System.out.print(stringPickedByStringPicker + " ");
             currentChainLength++;
             if (currentChainLength >= chainLength || stringPicked + 1 == parsedStrings.length){
                 //TODO custom randomness

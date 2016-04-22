@@ -14,7 +14,7 @@ public class Lulu {
 
 
 
-        new Pix(userString);
+        Pix Faerie = new Pix(userString);
     }
 
 
