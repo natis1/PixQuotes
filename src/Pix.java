@@ -9,10 +9,13 @@ public class Pix {
     private int chainLength = 3;
     private boolean usingWords = false;
 
-    public Pix(String unparsedString){
-        if (chainLength < 1){
-            chainLength = 1;
+    public Pix(String unparsedString, boolean usingWords, int chainLength){
+        this.usingWords = usingWords;
+        this.chainLength = chainLength;
+        if (this.chainLength < 1){
+            this.chainLength = 1;
         }
+
         unparsedString = parseString(unparsedString);
         if (usingWords){
             parsedStrings = parseWords(unparsedString);

@@ -12,7 +12,7 @@ public class Lulu {
     String userString;
     private static boolean IDE_MODE = true;
 
-    public Lulu(){
+    public Lulu(boolean textMode, int chainLength){
         userString = "The Awakening of kings was an event marked by the ultimate battle of the century. It lead to the" +
                 "\nultimate battle between good and evil. If there were ever an event which needed more popularity, it would" +
                 "\n      be this one. This string is to simulate different kinds of grammar and also the parsing that would be" +
@@ -42,13 +42,20 @@ public class Lulu {
             System.exit(2);
         }
 
-        new Pix(userString);
+        new Pix(userString, textMode, chainLength);
     }
 
-    public Lulu(String input){
+    public Lulu(String inputFile, boolean textMode, int chainLength){
+        byte[] fileByteData = new byte[0];
+        try {
+            fileByteData = Files.readAllBytes(Paths.get(inputFile));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        userString = new String(fileByteData, StandardCharsets.UTF_8);
 
 
-        new Pix(input);
+        new Pix(userString, textMode, chainLength);
     }
 
 
