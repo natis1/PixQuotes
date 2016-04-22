@@ -6,7 +6,7 @@ import java.util.Random;
  */
 public class Pix {
     private String[] parsedStrings;
-    private int chainLength = 2;
+    private int chainLength = 1;
 
     public Pix(String unparsedString){
         parsedStrings = parseString(unparsedString);
