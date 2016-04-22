@@ -22,11 +22,13 @@ public class Pix {
         unparsedString = parseString(unparsedString);
         if (usingWords){
             parsedStrings = parseWords(unparsedString);
+            generateWordChain();
         } else {
             parsedStrings = parseChars(unparsedString);
+            generateLetterChain();
         }
 
-        generateChain();
+
 
         System.out.println();//End it with a return
         System.out.println();//Or 2
@@ -62,7 +64,7 @@ public class Pix {
         return unparsedString.split("(?<=\\G" + s + ")");
     }
 
-    private void generateChain(){
+    private void generateWordChain(){
         Random stringPicker = new Random(System.nanoTime());
         int stringPicked = (int) Math.floor(parsedStrings.length * stringPicker.nextDouble()) - chainLength;
         for (int i = 0; i < chainsGenerated; i++){
@@ -75,40 +77,61 @@ public class Pix {
                     stringPickedByStringPicker += " ";
                 }
             }
+
+
             String lastWord = parsedStrings[stringPicked + chainLength - 1];
+
 
             System.out.print(stringPickedByStringPicker);
 
-                ArrayList<Integer> pickableStrings = new ArrayList<>();
-                for (int j = 0; j < parsedStrings.length - chainLength - 2; j++){
+            ArrayList<Integer> pickableStrings = new ArrayList<>();
+            for (int j = 0; j < parsedStrings.length - chainLength - 2; j++){
 
-                    if (usingWords){
-                        if (parsedStrings[j].replace(".", "") == lastWord.replace(".", "")){
-                            pickableStrings.add(j + 1);
-                        }
-                    } else {
-                        if (parsedStrings[j] == lastWord){
-                            pickableStrings.add(j + 1);
-                        }
-                    }
 
+                if (parsedStrings[j].replace(".", "") == lastWord.replace(".", "")){
+                    pickableStrings.add(j + 1);
                 }
-                if (pickableStrings.isEmpty() || stringPicked + chainLength == parsedStrings.length){
-                    stringPicked = (int) Math.floor(parsedStrings.length * stringPicker.nextDouble() - chainLength - 1);
-                    if (stringPicked < 0){
-                        stringPicked = 4;//that's a good number
-                    }
-                } else {
-                    stringPicked = pickableStrings.get((int) Math.floor(pickableStrings.size() * stringPicker.nextDouble()));
-                }
+
+
             }
-
-
+            if (pickableStrings.isEmpty() || stringPicked + chainLength == parsedStrings.length){
+                stringPicked = (int) Math.floor(parsedStrings.length * stringPicker.nextDouble() - chainLength - 1);
+                if (stringPicked < 0){
+                    stringPicked = 4;//that's a good number
+                }
+            } else {
+                stringPicked = pickableStrings.get((int) Math.floor(pickableStrings.size() * stringPicker.nextDouble()));
+            }
         }
 
-
-
     }
+
+    private void generateLetterChain(){
+        Random stringPicker = new Random(System.nanoTime());
+        int stringPicked = (int) Math.floor(parsedStrings.length * stringPicker.nextDouble()) - 1;
+        for (int i = 0; i < chainsGenerated; i++){
+
+            String stringPickedByStringPicker = parsedStrings[stringPicked];
+            System.out.print(stringPickedByStringPicker);
+
+            ArrayList<Integer> pickableStrings = new ArrayList<>();
+            for (int j = 0; j < parsedStrings.length - 1; j++){
+                if (parsedStrings[j].contains(stringPickedByStringPicker)){
+                    pickableStrings.add(j + 1);
+                }
+            }
+            if (pickableStrings.isEmpty() || stringPicked + chainLength == parsedStrings.length){
+                stringPicked = (int) Math.floor(parsedStrings.length * stringPicker.nextDouble() - chainLength - 1);
+                if (stringPicked < 0){
+                    stringPicked = 4;//that's a good number
+                }
+            } else {
+                stringPicked = pickableStrings.get((int) Math.floor(pickableStrings.size() * stringPicker.nextDouble()));
+            }
+        }
+    }
+
+}
 
 
 
