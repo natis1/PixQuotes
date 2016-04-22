@@ -10,7 +10,7 @@ import java.util.Scanner;
  */
 public class Lulu {
     String userString;
-    private static boolean IDE_MODE = true;
+    private static boolean IDE_MODE = false;
 
     public Lulu(int chainLength, boolean textMode){
         userString = "The Awakening of kings was an event marked by the ultimate battle of the century. It lead to the" +
