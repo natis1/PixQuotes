@@ -1,13 +1,16 @@
+import java.io.Console;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Scanner;
 
 /**
  * Created by kogmaw on 4/20/16.
  */
 public class Lulu {
     String userString;
+    private static boolean IDE_MODE = true;
 
     public Lulu(){
         userString = "The Awakening of kings was an event marked by the ultimate battle of the century. It lead to the" +
@@ -16,9 +19,23 @@ public class Lulu {
                 "\nrequired to get this thing working. slash n should become space and multiple      spaces in a row should be removed" +
                 "\n Using Regex makes this whole thing possible if I do it right. I hope   ";
 
+        int userTextMode = 0;
+
+        if (!IDE_MODE){
+            userString = "";
+
+            System.out.println("Enter the input text to use.");
+            Scanner inputScanner = new Scanner(System.in);
+            while(inputScanner.hasNextLine()) {
+                userString += inputScanner.nextLine();
+            }
+
+        } else {
+            setUserText(userTextMode);
+        }
 
 
-        setUserText(0);
+
 
         if (userString.length() < 30){
             System.out.println("Please add some more text");
