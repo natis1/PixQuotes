@@ -3,7 +3,7 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
 
-        if (args.length != 3 || args.length != 2){
+        if (args.length != 3 && args.length != 2){
             System.out.println("Improper syntax, please try again using the following command:");
             System.out.println("java -jar pixQuotes.jar (chain length) (words or letters) (optional input file)");
             System.out.println("For example: \"java -jar pixQuotes.jar 5 letters\"");
@@ -25,7 +25,7 @@ public class Main {
             } else {
                 System.out.println("Improper syntax, please try again using the following command:");
                 System.out.println("java -jar pixQuotes.jar (chain length) (\"words\" or \"letters\") (optional input file)");
-                System.out.println("For example: \"java -jar pixQuotes.jar 5 letters\"");
+                System.out.println("For example: \"java -jar pixQuotes.jar 4 letters\"");
                 System.exit(0);
             }
         }
