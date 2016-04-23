@@ -74,9 +74,6 @@ public class Pix {
             String lastWord = parsedStrings[stringPicked + chainLength - 1];
 
             System.out.print(stringPickedByStringPicker);
-            if (i % 10 == 9){
-                System.out.println();//return
-            }
 
                 ArrayList<Integer> pickableStrings = new ArrayList<>();
                 for (int j = 0; j < parsedStrings.length - chainLength - 2; j++){
