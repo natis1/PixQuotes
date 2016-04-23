@@ -16,6 +16,7 @@ public class Pix {
             this.chainLength = 1;
         }
 
+        System.out.println();//Return
         unparsedString = parseString(unparsedString);
         if (usingWords){
             parsedStrings = parseWords(unparsedString);

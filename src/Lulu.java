@@ -29,7 +29,7 @@ public class Lulu {
             while(inputScanner.hasNextLine()) {
                 userString += inputScanner.nextLine();
                 if (userString.endsWith("%end%")){
-                    userString.replace("%end%", "");
+                    userString = userString.replace("%end%", "");
                     break;
                 }
             }
