@@ -24,11 +24,14 @@ public class Lulu {
         if (!IDE_MODE){
             userString = "";
 
-            System.out.println("Enter the number of lines to input");
-            Console systemConsole = System.console();
-            int maxLines = Integer.valueOf(systemConsole.readLine());
-            for (int i = 0; i < maxLines + 1; i++){
-                userString += systemConsole.readLine();
+            System.out.println("Enter the input text to use. End the text with \"%end%\"");
+            Scanner inputScanner = new Scanner(System.in);
+            while(inputScanner.hasNextLine()) {
+                userString += inputScanner.nextLine();
+                if (userString.endsWith("%end%")){
+                    userString.replace("%end%", "");
+                    break;
+                }
             }
 
         } else {
