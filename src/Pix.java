@@ -8,10 +8,12 @@ public class Pix {
     private String[] parsedStrings;
     private int chainLength = 3;
     private boolean usingWords = false;
+    private int chainsGenerated = 200;
 
-    public Pix(String unparsedString, boolean usingWords, int chainLength){
+    public Pix(String unparsedString, boolean usingWords, int chainLength, int chainsGenerated){
         this.usingWords = usingWords;
         this.chainLength = chainLength;
+        this.chainsGenerated = chainsGenerated;
         if (this.chainLength < 1){
             this.chainLength = 1;
         }
@@ -59,7 +61,7 @@ public class Pix {
     private void generateChain(){
         Random stringPicker = new Random(System.nanoTime());
         int stringPicked = (int) Math.floor(parsedStrings.length * stringPicker.nextDouble()) - chainLength;
-        for (int i = 0; i < 200; i++){
+        for (int i = 0; i < chainsGenerated; i++){
 
             String stringPickedByStringPicker = "";
 
