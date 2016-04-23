@@ -63,7 +63,10 @@ public class Pix {
             String stringPickedByStringPicker = "";
 
             for  (int currentLength = 0; currentLength < chainLength; currentLength++) {
-                stringPickedByStringPicker += parsedStrings[stringPicked + currentLength] + " ";
+                stringPickedByStringPicker += parsedStrings[stringPicked + currentLength];
+                if (usingWords){
+                    stringPickedByStringPicker += " ";
+                }
             }
             String lastWord = parsedStrings[stringPicked + chainLength - 1];
 
@@ -88,6 +91,9 @@ public class Pix {
                 }
                 if (pickableStrings.isEmpty() || stringPicked + chainLength == parsedStrings.length){
                     stringPicked = (int) Math.floor(parsedStrings.length * stringPicker.nextDouble() - chainLength - 1);
+                    if (stringPicked < 0){
+                        stringPicked = 4;//that's a good number
+                    }
                 } else {
                     stringPicked = pickableStrings.get((int) Math.floor(pickableStrings.size() * stringPicker.nextDouble()));
                 }
