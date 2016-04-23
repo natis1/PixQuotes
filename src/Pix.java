@@ -27,6 +27,10 @@ public class Pix {
         }
 
         generateChain();
+
+        System.out.println();//End it with a return
+        System.out.println();//Or 2
+
     }
 
 
