@@ -17,7 +17,7 @@ public class Main {
                 } else {
                     new Lulu(chainLength, true, chainsGenerated);
                 }
-            } else if (args[1].toLowerCase().contains("letters")){
+            } else if (args[2].toLowerCase().contains("letters")){
                 if (args.length == 4){
                     new Lulu(chainLength, false, args[3], chainsGenerated);
                 } else {
