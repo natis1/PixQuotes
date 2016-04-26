@@ -108,7 +108,18 @@ public class Pix {
 
     private void generateLetterChain(){
         Random stringPicker = new Random(System.nanoTime());
-        int stringPicked = (int) Math.floor(parsedStrings.length * stringPicker.nextDouble()) - 1;
+        int stringPicked;
+
+        do {
+            stringPicked = (int) Math.floor(parsedStrings.length * stringPicker.nextDouble()) - 1;
+            if (stringPicked < 1){
+                break;
+            }
+
+        } while (!parsedStrings[stringPicked - 1].endsWith(" "));
+
+
+
         for (int i = 0; i < chainsGenerated; i++){
 
             String stringPickedByStringPicker = parsedStrings[stringPicked];
