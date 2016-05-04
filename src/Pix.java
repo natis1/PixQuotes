@@ -113,6 +113,7 @@ public class Pix {
     private void generateLetterChain(){
         Random stringPicker = new Random(System.nanoTime());
         int stringPicked;
+        boolean addSpace = true;
 
         do {
             stringPicked = (int) Math.floor(parsedStrings.length * stringPicker.nextDouble()) - 1;
@@ -127,9 +128,18 @@ public class Pix {
         for (int i = 0; i < chainsGenerated; i++){
 
             String stringPickedByStringPicker = parsedStrings[stringPicked];
+
+            if (!addSpace && chainLength > 1){
+                stringPickedByStringPicker = stringPickedByStringPicker.substring(1);
+                addSpace = true;
+            }
+
             System.out.print(stringPickedByStringPicker);
+
             if (stringPickedByStringPicker.endsWith(".")){
                 System.out.println();//for readability, feel free to turn off if you hate readability.
+                addSpace = false;
+
             } else if (stringPickedByStringPicker.endsWith(". ")){
                 System.out.println();
             }
