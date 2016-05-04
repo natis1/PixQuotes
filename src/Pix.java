@@ -83,6 +83,10 @@ public class Pix {
 
 
             System.out.print(stringPickedByStringPicker);
+            if (stringPickedByStringPicker.endsWith(". ")){
+                System.out.println();//for readability, feel free to turn off if you hate readability.
+                System.out.println();
+            }
 
             ArrayList<Integer> pickableStrings = new ArrayList<>();
             for (int j = 0; j < parsedStrings.length - chainLength - 2; j++){
@@ -124,6 +128,11 @@ public class Pix {
 
             String stringPickedByStringPicker = parsedStrings[stringPicked];
             System.out.print(stringPickedByStringPicker);
+            if (stringPickedByStringPicker.endsWith(".")){
+                System.out.println();//for readability, feel free to turn off if you hate readability.
+            } else if (stringPickedByStringPicker.endsWith(". ")){
+                System.out.println();
+            }
 
             ArrayList<Integer> pickableStrings = new ArrayList<>();
             for (int j = 0; j < parsedStrings.length - 1; j++){
