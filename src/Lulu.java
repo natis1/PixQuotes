@@ -117,6 +117,8 @@ public class Lulu {
             System.exit(2);
         }
 
+        new Pix(userString, textMode, chainLength, chainsGenerated);
+
     }
 
 
