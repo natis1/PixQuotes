@@ -99,7 +99,6 @@ public class Lulu {
         if (!IDE_MODE){
             userString = "";
 
-            System.out.println("Enter the input text to use. End the text with \"%end%\"");
             Scanner inputScanner = new Scanner(System.in);
             while(inputScanner.hasNextLine()) {
                 userString += inputScanner.nextLine();
