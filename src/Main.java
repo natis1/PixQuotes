@@ -3,12 +3,12 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
 
-        if (args.length != 4 && args.length != 3){
+        if (args.length != 4 && args.length != 3 && args.length != 1 && args.length != 0){
             System.out.println("Improper syntax, please try again using the following command:");
             System.out.println("java -jar pixQuotes.jar (chains to generate) (chain length) (words or letters) (optional input file)");
             System.out.println("For example: \"java -jar pixQuotes.jar 200 5 letters\"");
             System.exit(0);
-        } else {
+        } else if (args.length == 4 || args.length == 3) {
             int chainsGenerated = Integer.parseInt(args[0]);
             int chainLength = Integer.parseInt(args[1]);
             if (args[2].toLowerCase().contains("words")){
@@ -29,6 +29,10 @@ public class Main {
                 System.out.println("For example: \"java -jar pixQuotes.jar 200 4 letters\"");
                 System.exit(0);
             }
+        } else if (args.length == 1){
+            new Lulu(args[0]);
+        } else {
+            new Lulu();
         }
 
 

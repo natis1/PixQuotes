@@ -10,6 +10,9 @@ public class Pix {
     private boolean usingWords = false;
     private int chainsGenerated = 200;
 
+
+    private static int PARAGRAPH_LENGTH = 4;
+
     public Pix(String unparsedString, boolean usingWords, int chainLength, int chainsGenerated){
         this.usingWords = usingWords;
         this.chainLength = chainLength;
@@ -61,12 +64,17 @@ public class Pix {
             s += ".";
         }
 
+        //Adds a good deal of randomness to the start.
+        int remove = (int) Math.floor(chainLength * Math.random());
+        unparsedString = unparsedString.substring(remove);
+
         return unparsedString.split("(?<=\\G" + s + ")");
     }
 
     private void generateWordChain(){
         Random stringPicker = new Random(System.nanoTime());
         int stringPicked = (int) Math.floor(parsedStrings.length * stringPicker.nextDouble()) - chainLength;
+        int currentParagraphLength = 0;
         for (int i = 0; i < chainsGenerated; i++){
 
             String stringPickedByStringPicker = "";
@@ -83,10 +91,13 @@ public class Pix {
 
 
             System.out.print(stringPickedByStringPicker);
-            if (stringPickedByStringPicker.endsWith(". ")){
-                System.out.println();//for readability, feel free to turn off if you hate readability.
+            if (stringPickedByStringPicker.endsWith(". ") && currentParagraphLength < PARAGRAPH_LENGTH){
+                currentParagraphLength++;
+
+            } else if (stringPickedByStringPicker.endsWith(". ")){
                 System.out.println();
             }
+
 
             ArrayList<Integer> pickableStrings = new ArrayList<>();
             for (int j = 0; j < parsedStrings.length - chainLength - 2; j++){
@@ -101,7 +112,7 @@ public class Pix {
             if (pickableStrings.isEmpty() || stringPicked + chainLength == parsedStrings.length){
                 stringPicked = (int) Math.floor(parsedStrings.length * stringPicker.nextDouble() - chainLength - 1);
                 if (stringPicked < 0){
-                    stringPicked = 4;//that's a good number
+                    stringPicked = 6;//that's a good number
                 }
             } else {
                 stringPicked = pickableStrings.get((int) Math.floor(pickableStrings.size() * stringPicker.nextDouble()));
