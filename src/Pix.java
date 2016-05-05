@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Created by kogmaw on 4/20/16.
+ * Pix created itself on 4/20/16.
  */
 public class Pix {
     private String[] parsedStrings;

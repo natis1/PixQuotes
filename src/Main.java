@@ -1,7 +1,12 @@
+/**
+ * All names in this project are entirely fictional and any collision is entirely coincidental.
+ */
+
+
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+
 
         if (args.length != 4 && args.length != 3 && args.length != 1 && args.length != 0){
             System.out.println("Improper syntax, please try again using the following command:");

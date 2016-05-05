@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 
 /**
- * Created by kogmaw on 4/20/16.
+ * Lulu created herself on 4/20/16.
  */
 public class Lulu {
     String userString;
