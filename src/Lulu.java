@@ -46,7 +46,13 @@ public class Lulu {
             System.exit(2);
         }
 
-        new Pix(userString, textMode, chainLength, chainsGenerated);
+        if (chainLength == 1337){
+            new HackerLulu(userString, textMode, chainLength, chainsGenerated);
+        } else {
+            new Pix(userString, textMode, chainLength, chainsGenerated, false);
+        }
+
+
     }
 
     public Lulu(int chainLength, boolean textMode, String inputFile, int chainsGenerated){
@@ -61,7 +67,11 @@ public class Lulu {
         userString = new String(fileByteData, StandardCharsets.UTF_8);
 
 
-        new Pix(userString, textMode, chainLength, chainsGenerated);
+        if (chainLength == 1337){
+            new HackerLulu(userString, textMode, chainLength, chainsGenerated);
+        } else {
+            new Pix(userString, textMode, chainLength, chainsGenerated, false);
+        }
     }
 
     public Lulu(){
@@ -116,8 +126,11 @@ public class Lulu {
             System.exit(2);
         }
 
-        new Pix(userString, wordy, chainLength, chainsGenerated);
-
+        if (chainLength == 1337){
+            new HackerLulu(userString, wordy, chainLength, chainsGenerated);
+        } else {
+            new Pix(userString, wordy, chainLength, chainsGenerated, false);
+        }
     }
 
 
@@ -167,8 +180,11 @@ public class Lulu {
             System.exit(2);
         }
 
-        new Pix(userString, wordy, chainLength, chainsGenerated);
-
+        if (chainLength == 1337){
+            new HackerLulu(userString, wordy, chainLength, chainsGenerated);
+        } else {
+            new Pix(userString, wordy, chainLength, chainsGenerated, false);
+        }
     }
 
 

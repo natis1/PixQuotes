@@ -10,13 +10,21 @@ public class Pix {
     private boolean usingWords = false;
     private int chainsGenerated = 200;
 
+    private boolean hackerMode;
+    public String hackerString;
+
 
     private static int PARAGRAPH_LENGTH = 4;
 
-    public Pix(String unparsedString, boolean usingWords, int chainLength, int chainsGenerated){
+
+    public Pix(String unparsedString, boolean usingWords, int chainLength, int chainsGenerated, boolean hackerMode){
         this.usingWords = usingWords;
         this.chainLength = chainLength;
         this.chainsGenerated = chainsGenerated;
+        this.hackerMode = hackerMode;
+        if (hackerMode){
+            this.chainsGenerated = 10000;
+        }
         if (this.chainLength < 1){
             this.chainLength = 1;
         }
@@ -34,6 +42,9 @@ public class Pix {
 
 
         System.out.println();//End it with a return
+        if (hackerMode){
+            System.out.println("Hacking Complete. Penetration Successful");
+        }
         System.out.println();//Or 2
 
     }
@@ -90,12 +101,19 @@ public class Pix {
             String lastWord = parsedStrings[stringPicked + chainLength - 1];
 
 
-            System.out.print(stringPickedByStringPicker);
+            if (!hackerMode){
+                System.out.print(stringPickedByStringPicker);
+            } else {
+                hackerString += stringPickedByStringPicker;
+            }
             if (stringPickedByStringPicker.endsWith(". ") && currentParagraphLength < PARAGRAPH_LENGTH){
                 currentParagraphLength++;
 
             } else if (stringPickedByStringPicker.endsWith(". ")){
-                System.out.println();
+                if (!hackerMode){
+                    System.out.println();
+                }
+                currentParagraphLength = 0;
             }
 
 
@@ -144,11 +162,18 @@ public class Pix {
                 stringPickedByStringPicker = stringPickedByStringPicker.substring(1);
                 addSpace = true;
             }
+            if (!hackerMode){
+                System.out.print(stringPickedByStringPicker);
+            } else {
+                hackerString += stringPickedByStringPicker;
+            }
 
-            System.out.print(stringPickedByStringPicker);
 
             if (stringPickedByStringPicker.endsWith(".")){
-                System.out.println();//for readability, feel free to turn off if you hate readability.
+                if (!hackerMode){
+                    System.out.println();
+                }
+                //for readability, feel free to turn off if you hate readability.
                 addSpace = false;
 
             } else if (stringPickedByStringPicker.endsWith(". ")){
